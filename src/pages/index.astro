@@ -1,16 +1,5 @@
 ---
-// Component Imports
-
-// You can import components from any supported Framework here!
-
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
-let title = "My Astro Site";
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+let title = "Connor Adams";
 ---
 
 <html lang="en">
@@ -19,19 +8,110 @@ let title = "My Astro Site";
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/assets/favicon.pngs" />
     <link rel="stylesheet" href={Astro.resolve("../styles/global.css")} />
   </head>
-  <body>
-    <main>
-      <header>
-        <div class="bg-slate-700">
-          <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo" />
-          <h1 class="text-6xl">
-            Welcome to <a href="https://astro.build/">Astro</a>
-          </h1>
+  <body class="bg-black">
+    <div class="flex items-center justify-center pt-6 pb-6">
+      <div class="bg-white px-6 py-4 space-y-4 md:space-y-6 xl:space-y-8">
+        <h1
+          class="text-center uppercase text-3xl md:text-5xl xl:text-7xl mx-auto"
+        >
+          Connor Adams
+        </h1>
+        <img
+          class="rounded-full h-24 md:h-36 xl:h-48 mx-auto"
+          src="/assets/profile.jpg"
+          alt="Photo of Connor Adams"
+        />
+        <h2
+          class="text-center uppercase text-l md:text-2xl xl:text-4xl mx-auto"
+        >
+          Developer & Tech Enthusiast
+        </h2>
+        <div class="flex justify-center">
+          <p
+            class="text-center text-xl md:text-3xl xl:text-4xl leading-relaxed md:leading-relaxed xl:leading-relaxed max-w-sm md:max-w-xl xl:max-w-2xl"
+          >
+            Would you like to
+            <a
+              class="underline hover:no-underline"
+              href="https://studywith.connoradams.co.uk/">Study with Connor</a
+            >? 🎓
+          </p>
         </div>
-      </header>
-    </main>
+        <div class="flex justify-center space-x-4">
+          <a
+            href="https://www.linkedin.com/in/connoradams"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+          >
+            <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-linkedin.svg"
+            /></a
+          >
+          <a
+            href="https://twitter.com/connorads"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+          >
+            <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-twitter.svg" /></a
+          >
+          <a
+            href="https://medium.com/@connorads"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+          >
+            <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-medium.svg" /></a
+          >
+          <a
+            href="https://github.com/connorads"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+          >
+            <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-github.svg" /></a
+          >
+          <a
+            href="https://lockbot.app/"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+          >
+            <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-lock.svg" /></a
+          >
+          <a
+            href="https://thepengestkhans.co.uk/"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+          >
+            <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-map.svg" /></a
+          >
+        </div>
+        <div class="mx-auto divide-y-2 max-w-sm md:max-w-xl">
+          <div class="py-1"></div>
+          <div class="py-1"></div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <h3 class="text-center text-2xl md:text-4xl xl:text-5xl">Contact</h3>
+        </div>
+        <form class="flex flex-col justify-center">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            class="m-1 border-2 border-gray-300"
+          />
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            class="m-1 border-2 border-gray-300"
+          />
+          <input
+            type="text"
+            name="message"
+            placeholder="Message"
+            class="m-1 border-2 border-gray-300"
+          />
+          <input
+            type="submit"
+            value="Submit"
+            class="inline-block self-center font-semibold rounded-full text-white bg-black bg-opacity-90 hover:bg-gray-700 duration-300 px-4 py-2 w-32"
+          />
+        </form>
+      </div>
+    </div>
   </body>
 </html>
