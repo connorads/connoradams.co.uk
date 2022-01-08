@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "npx wrangler pages dev --proxy 3000 -- npx astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "prettier": "prettier -w ."
