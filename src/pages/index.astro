@@ -11,23 +11,9 @@ let title = "Connor Adams";
     <link rel="icon" type="image/png" href="/assets/favicon.pngs" />
     <link rel="stylesheet" href={Astro.resolve("../styles/global.css")} />
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.waves.min.js"
-    ></script>
-    <script>
-      const emerald700 = 0x47857;
-      window.addEventListener("DOMContentLoaded", function () {
-        VANTA.WAVES({
-          el: "#background",
-          color: emerald700,
-        });
-      });
-    </script>
+    <script type="module" src={Astro.resolve("../background.ts")}></script>
   </head>
-  <body id="background" class="bg-emerald-700 min-h-screen">
+  <body class="bg-emerald-500 min-h-screen">
     <div class="flex items-center justify-center pt-12 pb-6">
       <div
         class="bg-white rounded-xl px-6 py-4 md:px-12 md:py-12 space-y-4 md:space-y-6 xl:space-y-8"
