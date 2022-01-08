@@ -10,8 +10,24 @@ let title = "Connor Adams";
 
     <link rel="icon" type="image/png" href="/assets/favicon.pngs" />
     <link rel="stylesheet" href={Astro.resolve("../styles/global.css")} />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.waves.min.js"
+    ></script>
+    <script>
+      const emerald700 = 0x47857;
+      window.addEventListener("DOMContentLoaded", function () {
+        VANTA.WAVES({
+          el: "#background",
+          color: emerald700,
+        });
+      });
+    </script>
   </head>
-  <body class="bg-black">
+  <body id="background" class="bg-emerald-700 min-h-screen">
     <div class="flex items-center justify-center pt-12 pb-6">
       <div
         class="bg-white rounded-xl px-6 py-4 md:px-12 md:py-12 space-y-4 md:space-y-6 xl:space-y-8"
@@ -45,38 +61,38 @@ let title = "Connor Adams";
         <div class="flex justify-center space-x-4">
           <a
             href="https://www.linkedin.com/in/connoradams"
-            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 duration-300"
           >
             <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-linkedin.svg"
             /></a
           >
           <a
             href="https://twitter.com/connorads"
-            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 duration-300"
           >
             <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-twitter.svg" /></a
           >
           <a
             href="https://medium.com/@connorads"
-            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 duration-300"
           >
             <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-medium.svg" /></a
           >
           <a
             href="https://github.com/connorads"
-            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 duration-300"
           >
             <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-github.svg" /></a
           >
           <a
             href="https://lockbot.app/"
-            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 duration-300"
           >
             <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-lock.svg" /></a
           >
           <a
             href="https://thepengestkhans.co.uk/"
-            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-pink-600 duration-300"
+            class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 duration-300"
           >
             <img class="h-6 md:h-9 xl:h-12" src="/assets/icon-map.svg" /></a
           >
