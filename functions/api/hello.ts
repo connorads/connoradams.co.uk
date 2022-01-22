@@ -9,6 +9,7 @@ export async function onRequestPost(context) {
     data, // arbitrary space for passing data between middlewares
   } = context;
 
-  console.log(JSON.stringify(context, null, 2));
-  return new Response("Hello, world!");
+  const json = await request.json()
+  console.log(JSON.stringify(json, null, 2));
+  return new Response(JSON.stringify(json));
 }
