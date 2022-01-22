@@ -1,12 +1,21 @@
 import { useForm } from "react-hook-form";
 
+export interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 const Form = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data: FormData) => {
+    console.log(data);
+    await fetch("/api/hello", { method: "POST", body: JSON.stringify(data) });
+  };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

@@ -1,4 +1,4 @@
-export async function onRequest(context) {
+export async function onRequestPost(context) {
   // Contents of context object
   const {
     request, // same as existing Worker API
@@ -9,5 +9,6 @@ export async function onRequest(context) {
     data, // arbitrary space for passing data between middlewares
   } = context;
 
+  console.log(JSON.stringify(context, null, 2));
   return new Response("Hello, world!");
 }
