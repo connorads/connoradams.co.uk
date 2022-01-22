@@ -3,8 +3,8 @@
 Hello there, this is a work in progress 🙃
 
 ## TODO
+
 - form
-  - validation
   - loading
   - success
   - [testing](https://react-hook-form.com/advanced-usage#TestingForm)
