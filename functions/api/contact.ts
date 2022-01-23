@@ -1,6 +1,8 @@
 import { FormSubmission } from "../../src/components/Form";
 
+// https://developers.cloudflare.com/pages/platform/functions
 export async function onRequestPost(context: {
+  // https://bit.ly/3r38OsV
   request: Request;
   env: { SENDGRID_API_KEY?: string; TO_EMAIL?: string; FROM_EMAIL?: string };
 }) {
@@ -9,6 +11,7 @@ export async function onRequestPost(context: {
   console.log("Contact form submitted", JSON.stringify(form, null, 2));
 
   if (env.SENDGRID_API_KEY && env.TO_EMAIL && env.FROM_EMAIL) {
+    // https://docs.sendgrid.com/api-reference/mail-send/mail-send
     const msg = {
       personalizations: [{ to: [{ email: env.TO_EMAIL }] }],
       from: { name: form.name, email: env.FROM_EMAIL },
