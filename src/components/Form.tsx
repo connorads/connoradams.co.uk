@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-export interface FormData {
+export interface FormSubmission {
   name: string;
   email: string;
   message: string;
@@ -12,9 +12,9 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: FormSubmission) => {
     console.log(data);
-    await fetch("/api/hello", { method: "POST", body: JSON.stringify(data) });
+    await fetch("/api/contact", { method: "POST", body: JSON.stringify(data) });
   };
   return (
     <form
