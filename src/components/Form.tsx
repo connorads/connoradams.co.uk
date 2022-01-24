@@ -1,17 +1,21 @@
 import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from "zod";
 
-export interface FormSubmission {
-  name: string;
-  email: string;
-  message: string;
-}
+export const formSchema = z.object({
+  name: z.string().min(5),
+  email: z.string().email(),
+  message: z.string().min(20),
+});
+
+type FormSubmission = z.infer<typeof formSchema>;
 
 const Form = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({resolver: zodResolver(formSchema)});
   const onSubmit = async (data: FormSubmission) => {
     console.log(data);
     await fetch("/api/contact", { method: "POST", body: JSON.stringify(data) });
@@ -23,9 +27,7 @@ const Form = () => {
     >
       <div className="mb-2">
         <input
-          {...register("name", {
-            required: "Name required",
-          })}
+          {...register("name")}
           type="text"
           name="name"
           placeholder="Name"
@@ -39,13 +41,7 @@ const Form = () => {
       </div>
       <div className="mb-2">
         <input
-          {...register("email", {
-            required: "Email required",
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: "Invalid email format",
-            },
-          })}
+          {...register("email")}
           type="text"
           name="email"
           placeholder="Email"
@@ -59,17 +55,10 @@ const Form = () => {
       </div>
       <div className="mb-2">
         <textarea
-          {...register("message", {
-            required: "Message required",
-            minLength: {
-              value: 20,
-              message: "Message too short",
-            },
-          })}
-          type="text"
+          {...register("message")}
           name="message"
           placeholder="Message"
-          rows="3"
+          rows={3}
           className="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
         ></textarea>
         {errors.message && (
