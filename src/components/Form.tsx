@@ -1,5 +1,6 @@
+import React from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from '@hookform/resolvers/zod';
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 export const formSchema = z.object({
@@ -15,7 +16,7 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({resolver: zodResolver(formSchema)});
+  } = useForm({ resolver: zodResolver(formSchema) });
   const onSubmit = async (data: FormSubmission) => {
     console.log(data);
     await fetch("/api/contact", { method: "POST", body: JSON.stringify(data) });
@@ -30,6 +31,7 @@ const Form = () => {
           {...register("name")}
           type="text"
           name="name"
+          aria-label="name"
           placeholder="Name"
           className="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
         />
@@ -44,6 +46,7 @@ const Form = () => {
           {...register("email")}
           type="text"
           name="email"
+          aria-label="email"
           placeholder="Email"
           className="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
         />
@@ -57,6 +60,7 @@ const Form = () => {
         <textarea
           {...register("message")}
           name="message"
+          aria-label="message"
           placeholder="Message"
           rows={3}
           className="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"

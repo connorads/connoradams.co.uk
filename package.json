@@ -5,16 +5,20 @@
   "scripts": {
     "dev": "npx wrangler pages dev --proxy 3000 -- npx astro dev",
     "build": "astro build",
+    "test": "vitest",
     "preview": "astro preview",
     "prettier": "prettier -w ."
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.2",
     "@types/react": "^17.0.38",
     "astro": "^0.22.1",
     "autoprefixer": "^10.4.0",
+    "jsdom": "^19.0.0",
     "postcss": "^8.4.5",
     "prettier-plugin-astro": "^0.0.11",
     "tailwindcss": "^3.0.7",
+    "vitest": "^0.2.3",
     "wrangler": "^0.0.7"
   },
   "dependencies": {
