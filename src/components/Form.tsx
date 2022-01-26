@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { zodResolver } from '@hookform/resolvers/zod';
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 export const formSchema = z.object({
@@ -14,11 +14,19 @@ const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({resolver: zodResolver(formSchema)});
+    setError,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+  } = useForm({ resolver: zodResolver(formSchema) });
   const onSubmit = async (data: FormSubmission) => {
-    console.log(data);
-    await fetch("/api/contact", { method: "POST", body: JSON.stringify(data) });
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      const message = `Failed to submit form ${response.status}`;
+      setError("apiError", { message });
+      throw new Error(message);
+    }
   };
   return (
     <form
@@ -69,9 +77,28 @@ const Form = () => {
       </div>
       <input
         type="submit"
-        value="Send message ✉️"
-        className="self-center h-10 px-5 font-semibold text-white transition-colors duration-150 bg-emerald-500 rounded-lg focus:shadow-outline hover:bg-emerald-600 hover:cursor-pointer"
+        value={
+          isSubmitting
+            ? "Sending ..."
+            : isSubmitSuccessful
+            ? "Message sent ✅"
+            : "Send message ✉️"
+        }
+        disabled={isSubmitting || isSubmitSuccessful}
+        className={
+          "self-center h-10 px-5 font-semibold text-white transition-colors duration-150 rounded-lg focus:shadow-outline " +
+          (isSubmitting
+            ? "bg-gray-500 cursor-progress"
+            : isSubmitSuccessful
+            ? "bg-gray-500 cursor-not-allowed"
+            : "bg-emerald-500 hover:bg-emerald-600 hover:cursor-pointer")
+        }
       />
+      {errors.apiError && (
+        <span className="self-center text-xs text-red-700" role="alert">
+          Form submission failed, please try again!
+        </span>
+      )}
     </form>
   );
 };
