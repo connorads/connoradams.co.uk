@@ -1,12 +1,33 @@
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+export const formSchema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+  message: z.string().min(15),
+});
+
+type FormSubmission = z.infer<typeof formSchema>;
 
 const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+    setError,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+  } = useForm({ resolver: zodResolver(formSchema) });
+  const onSubmit = async (data: FormSubmission) => {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      const message = `Failed to submit form ${response.status}`;
+      setError("apiError", { message });
+      throw new Error(message);
+    }
+  };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -14,9 +35,7 @@ const Form = () => {
     >
       <div className="mb-2">
         <input
-          {...register("name", {
-            required: "Name required",
-          })}
+          {...register("name")}
           type="text"
           name="name"
           placeholder="Name"
@@ -30,13 +49,7 @@ const Form = () => {
       </div>
       <div className="mb-2">
         <input
-          {...register("email", {
-            required: "Email required",
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: "Invalid email format",
-            },
-          })}
+          {...register("email")}
           type="text"
           name="email"
           placeholder="Email"
@@ -50,17 +63,10 @@ const Form = () => {
       </div>
       <div className="mb-2">
         <textarea
-          {...register("message", {
-            required: "Message required",
-            minLength: {
-              value: 20,
-              message: "Message too short",
-            },
-          })}
-          type="text"
+          {...register("message")}
           name="message"
           placeholder="Message"
-          rows="3"
+          rows={3}
           className="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
         ></textarea>
         {errors.message && (
@@ -71,9 +77,28 @@ const Form = () => {
       </div>
       <input
         type="submit"
-        value="Send message ✉️"
-        className="self-center h-10 px-5 font-semibold text-white transition-colors duration-150 bg-emerald-500 rounded-lg focus:shadow-outline hover:bg-emerald-600 hover:cursor-pointer"
+        value={
+          isSubmitting
+            ? "Sending ..."
+            : isSubmitSuccessful
+            ? "Message sent ✅"
+            : "Send message ✉️"
+        }
+        disabled={isSubmitting || isSubmitSuccessful}
+        className={
+          "self-center h-10 px-5 font-semibold text-white transition-colors duration-150 rounded-lg focus:shadow-outline " +
+          (isSubmitting
+            ? "bg-gray-500 cursor-progress"
+            : isSubmitSuccessful
+            ? "bg-gray-500 cursor-not-allowed"
+            : "bg-emerald-500 hover:bg-emerald-600 hover:cursor-pointer")
+        }
       />
+      {errors.apiError && (
+        <span className="self-center text-xs text-red-700" role="alert">
+          Form submission failed, please try again!
+        </span>
+      )}
     </form>
   );
 };
