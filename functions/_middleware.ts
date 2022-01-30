@@ -9,13 +9,13 @@ const errorHandler = async ({
   request: Request;
   waitUntil: (promise: Promise<any>) => void;
   next: (input?: Request | string, init?: RequestInit) => Promise<Response>;
-  env: { SENTRY_DSN?: string };
+  env: { SENTRY_DSN?: string; ENVIRONMENT?: string };
 }) => {
   let sentry: Toucan | undefined;
   if (env.SENTRY_DSN)
     sentry = new Toucan({
       dsn: env.SENTRY_DSN,
-      environment: "development", // TODO Remove
+      environment: env.ENVIRONMENT || "development",
       context: { waitUntil, request },
       allowedHeaders: ["user-agent"],
       allowedSearchParams: /(.*)/,
