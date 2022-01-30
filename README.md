@@ -4,7 +4,6 @@ Hello there, this is a work in progress 🙃
 
 ## TODO
 
-- mobile: card edges gaps at side
 - meta social share tags
 - lighthouse
 - go live domain
