@@ -21,6 +21,7 @@
     "@astrojs/renderer-react": "^0.4.1",
     "@hookform/resolvers": "^2.8.8",
     "react-hook-form": "^7.22.5",
+    "toucan-js": "^2.5.0",
     "zod": "^3.11.6"
   }
 }
