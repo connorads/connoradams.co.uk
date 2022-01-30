@@ -1,20 +1,19 @@
 ---
 import Icon from "../components/Icon.astro";
 import Form from "../components/Form.tsx";
-let title = "Connor Adams";
+let title = "Connor Adams - Developer & Tech Enthusiast in London";
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta property="og:title" content="Connor Adams | Developer & Tech Enthusiast">
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="/assets/share.png">
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={title}>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://e1fc7ca4.connorads.pages.dev/assets/share.png">
     <meta property="og:url" content="https://connoradams.co.uk">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:description" content="Connor Adams | Developer & Tech Enthusiast">
-    <meta property="og:site_name" content="Connor Adams">
 
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
