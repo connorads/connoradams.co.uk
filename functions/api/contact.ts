@@ -6,7 +6,6 @@ export async function onRequestPost(context: {
   request: Request;
   env: { SENDGRID_API_KEY?: string; TO_EMAIL?: string; FROM_EMAIL?: string };
 }) {
-  throw new Error("fackkk");
   const { request, env } = context;
   const body: unknown = await request.json();
   const result = formSchema.safeParse(body);
