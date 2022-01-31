@@ -12,5 +12,5 @@ jobs:
         uses: treosh/lighthouse-ci-action@v8
         with:
           urls: |
-            https://connorads.pages.dev
+            https://connoradams.co.uk
           temporaryPublicStorage: true
