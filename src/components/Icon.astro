@@ -1,16 +1,18 @@
 ---
+import { Icon } from "astro-icon";
+
 export interface Props {
   href: string;
-  src: string;
-  alt: string;
+  name: string;
+  title: string;
 }
 
-const { href, src, alt } = Astro.props;
+const { href, name, title } = Astro.props;
 ---
 
 <a
   {href}
   class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 duration-300"
 >
-  <img class="h-6 md:h-9 xl:h-12" {src} {alt} /></a
+  <Icon class="h-6 md:h-9 xl:h-12" {name} {title} /></a
 >

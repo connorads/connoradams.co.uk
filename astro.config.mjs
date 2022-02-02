@@ -7,4 +7,9 @@ export default {
     tailwindConfig: "./tailwind.config.js",
   },
   renderers: ["@astrojs/renderer-react"],
+  vite: {
+    ssr: {
+      external: ["svgo"],
+    },
+  },
 };
