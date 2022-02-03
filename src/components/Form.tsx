@@ -87,12 +87,12 @@ const Form = () => {
         }
         disabled={isSubmitting || isSubmitSuccessful}
         className={
-          "self-center h-10 px-5 font-semibold text-white transition-colors duration-150 rounded-lg focus:shadow-outline " +
+          "self-center h-10 px-5 font-semibold text-white rounded-lg " +
           (isSubmitting
             ? "bg-gray-500 cursor-progress"
             : isSubmitSuccessful
             ? "bg-gray-500 cursor-not-allowed"
-            : "bg-emerald-500 hover:bg-emerald-600 hover:cursor-pointer")
+            : "bg-black hover:bg-emerald-600 hover:cursor-pointer")
         }
       />
       {errors.apiError && (
