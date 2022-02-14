@@ -87,7 +87,7 @@ const Form = () => {
         }
         disabled={isSubmitting || isSubmitSuccessful}
         className={
-          "self-center h-10 px-5 font-semibold text-white rounded-lg " +
+          "self-center h-10 px-5 font-semibold text-white rounded-lg transition-colors " +
           (isSubmitting
             ? "bg-gray-500 cursor-progress"
             : isSubmitSuccessful
