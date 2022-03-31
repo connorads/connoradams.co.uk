@@ -1,15 +1,16 @@
-export default {
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
+
+// https://astro.build/config
+export default defineConfig({
   buildOptions: {
     site: "https://connoradams.co.uk",
-    sitemap: true,
   },
-  devOptions: {
-    tailwindConfig: "./tailwind.config.js",
-  },
-  renderers: ["@astrojs/renderer-react"],
+  integrations: [react(), tailwind()],
   vite: {
     ssr: {
       external: ["svgo"],
     },
   },
-};
+});
