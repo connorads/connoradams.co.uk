@@ -9,11 +9,11 @@
     "prettier": "prettier -w ."
   },
   "devDependencies": {
-    "@astrojs/react": "^0.0.2",
-    "@astrojs/tailwind": "^0.0.2",
+    "@astrojs/react": "^0.1.2",
+    "@astrojs/tailwind": "^0.2.1",
     "@types/react": "^17.0.38",
-    "astro": "^0.25.4",
-    "astro-icon": "^0.6.1",
+    "astro": "^1.0.0-beta.27",
+    "astro-icon": "^0.7.1",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
     "prettier-plugin-astro": "^0.0.11",

@@ -4,9 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  buildOptions: {
-    site: "https://connoradams.co.uk",
-  },
+  site: "https://connoradams.co.uk",
   integrations: [react(), tailwind()],
   vite: {
     ssr: {
