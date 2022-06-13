@@ -12,20 +12,21 @@ export const formSchema = z.object({
 type FormSubmission = z.infer<typeof formSchema>;
 
 const Form = () => {
+  const [apiError, setApiError] = React.useState<string | null>(null);
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm({ resolver: zodResolver(formSchema) });
+  } = useForm<FormSubmission>({ resolver: zodResolver(formSchema) });
   const onSubmit = async (data: FormSubmission) => {
+    if (apiError) setApiError(null);
     const response = await fetch("/api/contact", {
       method: "POST",
       body: JSON.stringify(data),
     });
     if (!response.ok) {
       const message = `Failed to submit form ${response.status}`;
-      setError("apiError", { message });
+      setApiError(message);
       throw new Error(message);
     }
   };
@@ -95,7 +96,7 @@ const Form = () => {
             : "bg-black hover:bg-emerald-600 hover:cursor-pointer")
         }
       />
-      {errors.apiError && (
+      {apiError && (
         <span className="self-center text-xs text-red-700" role="alert">
           Form submission failed, please try again!
         </span>
