@@ -26,6 +26,6 @@
     "@hookform/resolvers": "^2.9.1",
     "react-hook-form": "^7.32.0",
     "toucan-js": "^2.5.0",
-    "zod": "^3.11.6"
+    "zod": "^3.17.3"
   }
 }
