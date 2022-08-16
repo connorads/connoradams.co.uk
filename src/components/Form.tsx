@@ -11,7 +11,7 @@ export const formSchema = z.object({
 
 type FormSubmission = z.infer<typeof formSchema>;
 
-const Form = () => {
+export default function Form() {
   const [apiError, setApiError] = React.useState<string | null>(null);
   const {
     register,
@@ -103,6 +103,4 @@ const Form = () => {
       )}
     </form>
   );
-};
-
-export default Form;
+}

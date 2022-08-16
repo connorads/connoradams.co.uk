@@ -16,4 +16,4 @@ Ello ello 👋 I'm Connor Adams and [this is my personal website 🌐](https://c
 
 Noticed something unexpected or have an idea?
 
-Feel free to open a PR or drop me a message on my ... [website 😉](https://connoradams.co.uk) 
+Feel free to open a PR or drop me a message on my ... [website 😉](https://connoradams.co.uk)
