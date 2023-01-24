@@ -1,8 +1,3 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "react",
-    "esModuleInterop": true
-  }
+  "extends": "astro/tsconfigs/base",
 }

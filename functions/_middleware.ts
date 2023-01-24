@@ -1,4 +1,4 @@
-import Toucan from "toucan-js";
+import { Toucan } from "toucan-js";
 
 const errorHandler = async ({
   request,
@@ -17,8 +17,10 @@ const errorHandler = async ({
       dsn: env.SENTRY_DSN,
       environment: env.ENVIRONMENT || "development",
       context: { waitUntil, request },
-      allowedHeaders: ["user-agent"],
-      allowedSearchParams: /(.*)/,
+      requestDataOptions: {
+        allowedHeaders: ["user-agent"],
+        allowedSearchParams: /(.*)/,
+      },
     });
   try {
     return await next();

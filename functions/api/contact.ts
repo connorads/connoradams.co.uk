@@ -9,7 +9,7 @@ export async function onRequestPost(context: {
   const { request, env } = context;
   const body: unknown = await request.json();
   const result = formSchema.safeParse(body);
-  if (!result.success)
+  if (result.success === false)
     return new Response(result.error.message, { status: 400 });
 
   if (env.SENDGRID_API_KEY && env.TO_EMAIL && env.FROM_EMAIL) {
