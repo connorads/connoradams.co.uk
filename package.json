@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "prettier": "prettier -w ."
+    "prettier": "prettier -w **/*.astro && prettier -w ."
   },
   "devDependencies": {
     "@astrojs/react": "^2.3.2",
