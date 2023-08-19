@@ -11,23 +11,24 @@
     "prettier": "prettier -w ."
   },
   "devDependencies": {
-    "@astrojs/react": "^2.0.0",
-    "@astrojs/tailwind": "^3.0.0",
-    "@types/react": "^18.0.27",
-    "astro": "^2.0.1",
-    "astro-icon": "^0.8.0",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "prettier-plugin-astro": "^0.7.2",
+    "@astrojs/react": "^2.3.2",
+    "@astrojs/tailwind": "^4.0.0",
+    "@types/react": "^18.2.20",
+    "astro": "^2.10.12",
+    "astro-icon": "^0.8.1",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.28",
+    "prettier": "^3.0.2",
+    "prettier-plugin-astro": "^0.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.2.4",
-    "wrangler": "^2.8.1"
+    "tailwindcss": "^3.3.3",
+    "wrangler": "^3.5.1"
   },
   "dependencies": {
-    "@hookform/resolvers": "^2.9.10",
-    "react-hook-form": "^7.42.1",
-    "toucan-js": "^3.1.0",
-    "zod": "^3.20.2"
+    "@hookform/resolvers": "^3.2.0",
+    "react-hook-form": "^7.45.4",
+    "toucan-js": "^3.2.2",
+    "zod": "^3.22.2"
   }
 }
