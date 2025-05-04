@@ -16,3 +16,17 @@ yarn-error.log*
 
 # macOS-specific files
 .DS_Store
+
+# Astro
+.astro/
+.wrangler/
+.wrangler/tmp/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# System Files
+Thumbs.db
