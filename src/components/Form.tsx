@@ -83,8 +83,8 @@ export default function Form() {
           isSubmitting
             ? "Sending ..."
             : isSubmitSuccessful
-            ? "Message sent ✅"
-            : "Send message ✉️"
+              ? "Message sent ✅"
+              : "Send message ✉️"
         }
         disabled={isSubmitting || isSubmitSuccessful}
         className={
@@ -92,8 +92,8 @@ export default function Form() {
           (isSubmitting
             ? "bg-gray-500 cursor-progress"
             : isSubmitSuccessful
-            ? "bg-gray-500 cursor-not-allowed"
-            : "bg-black hover:bg-emerald-600 hover:cursor-pointer")
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-black hover:bg-emerald-600 hover:cursor-pointer")
         }
       />
       {apiError && (
