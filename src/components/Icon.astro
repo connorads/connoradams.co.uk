@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import "iconify-icon";
 
 export interface Props {
   href: string;
@@ -14,5 +14,9 @@ const { href, name, title } = Astro.props;
   href={href}
   class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 transition-colors"
 >
-  <Icon class="h-6 md:h-9 xl:h-12" name={name} title={title} />
+  <iconify-icon
+    class="h-6 md:h-9 xl:h-12 text-2xl md:text-4xl xl:text-6xl"
+    icon={`simple-icons:${name}`}
+    aria-label={title}
+  ></iconify-icon>
 </a>
