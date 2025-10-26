@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon as AstroIcon } from "astro-icon/components";
 
 export interface Props {
   href: string;
@@ -13,6 +13,7 @@ const { href, name, title } = Astro.props;
 <a
   href={href}
   class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 transition-colors"
+  aria-label={title}
 >
-  <Icon class="h-6 md:h-9 xl:h-12" name={name} title={title} />
+  <AstroIcon name={name} class="size-6 md:size-9 xl:size-12" />
 </a>
