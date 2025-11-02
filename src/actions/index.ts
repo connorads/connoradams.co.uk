@@ -6,9 +6,18 @@ export const server = {
   contact: defineAction({
     accept: "form",
     input: z.object({
-      name: z.string().min(2, "Name must be at least 2 characters"),
-      email: z.string().email("Please enter a valid email address"),
-      message: z.string().min(15, "Message must be at least 15 characters"),
+      name: z.preprocess(
+        (val) => val || "",
+        z.string().min(2, "Name must be at least 2 characters"),
+      ),
+      email: z.preprocess(
+        (val) => val || "",
+        z.string().email("Please enter a valid email address"),
+      ),
+      message: z.preprocess(
+        (val) => val || "",
+        z.string().min(15, "Message must be at least 15 characters"),
+      ),
     }),
     handler: async (input, context) => {
       // Access environment variables via Cloudflare runtime
