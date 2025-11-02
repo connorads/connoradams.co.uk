@@ -17,6 +17,14 @@
     "CONTACT_RECIPIENT_EMAILS": "form-responses@connoradams.co.uk",
   },
 
+  // Routes configuration
+  "routes": [
+    {
+      "pattern": "connoradams.co.uk",
+      "custom_domain": true,
+    },
+  ],
+
   // Static assets configuration
   "assets": {
     // Directory containing your built static files
