@@ -1,0 +1,82 @@
+---
+import { actions, isInputError } from "astro:actions";
+
+export const prerender = false;
+
+const result = Astro.getActionResult(actions.contact);
+---
+
+<div>
+  {
+    result?.data && (
+      <div class="mb-4 rounded-lg border border-emerald-600 bg-emerald-50 px-4 py-3 text-emerald-700">
+        <p class="font-semibold">✅ {result.data.message}</p>
+      </div>
+    )
+  }
+
+  {
+    result?.error && !isInputError(result.error) && (
+      <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-red-700">
+        <p class="font-semibold">❌ {result.error.message}</p>
+      </div>
+    )
+  }
+
+  <form
+    method="POST"
+    action={actions.contact}
+    class="flex flex-col justify-center"
+  >
+    <div class="mb-2">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
+      />
+      {
+        isInputError(result?.error) && result.error.fields.name && (
+          <span class="text-xs text-red-700" role="alert">
+            {result.error.fields.name.join(", ")}
+          </span>
+        )
+      }
+    </div>
+    <div class="mb-2">
+      <input
+        type="text"
+        name="email"
+        placeholder="Email"
+        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
+      />
+      {
+        isInputError(result?.error) && result.error.fields.email && (
+          <span class="text-xs text-red-700" role="alert">
+            {result.error.fields.email.join(", ")}
+          </span>
+        )
+      }
+    </div>
+    <div class="mb-2">
+      <textarea
+        name="message"
+        placeholder="Message"
+        rows={3}
+        class="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
+      ></textarea>
+      {
+        isInputError(result?.error) && result.error.fields.message && (
+          <span class="text-xs text-red-700" role="alert">
+            {result.error.fields.message.join(", ")}
+          </span>
+        )
+      }
+    </div>
+    <input
+      type="submit"
+      value="Send message ✉️"
+      class="self-center h-10 px-5 font-semibold text-white rounded-lg transition-colors bg-black hover:bg-emerald-600 hover:cursor-pointer"
+    />
+  </form>
+</div>

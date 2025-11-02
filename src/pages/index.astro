@@ -1,7 +1,10 @@
 ---
 import Icon from "../components/Icon.astro";
-import Form from "../components/Form";
+import Form from "../components/Form.astro";
 import "../styles/global.css";
+
+export const prerender = false;
+
 let title = "Connor Adams - Developer & Tech Enthusiast in London";
 ---
 
@@ -95,7 +98,7 @@ let title = "Connor Adams - Developer & Tech Enthusiast in London";
           <h3 class="text-center text-1xl md:text-3xl xl:text-4xl">Contact</h3>
         </div>
         <div>
-          <Form client:load />
+          <Form />
         </div>
       </div>
     </div>

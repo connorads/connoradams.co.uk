@@ -3,15 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "npx wrangler pages dev --compatibility-date=2023-01-25 --proxy 4321 -- npx astro dev",
+    "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro build && wrangler dev",
     "astro": "astro",
-    "check": "astro check",
-    "prettier": "prettier -w **/*.astro && prettier -w ."
+    "deploy": "astro build && wrangler deploy",
+    "cf-typegen": "wrangler types",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "astro check && npm run format:check"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
+    "@astrojs/cloudflare": "^12.6.10",
     "@astrojs/react": "^4.4.0",
     "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^19.2.2",
@@ -26,9 +30,7 @@
     "wrangler": "^4.45.0"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.2.2",
-    "react-hook-form": "^7.54.2",
-    "toucan-js": "^4.1.1",
+    "resend": "^6.4.0",
     "zod": "^4.1.12"
   }
 }
