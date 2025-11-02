@@ -14,7 +14,7 @@
   // Environment variables (non-sensitive)
   "vars": {
     "CONTACT_FROM_EMAIL": "Contact Form <noreply@connoradams.co.uk>",
-    "CONTACT_RECIPIENT_EMAILS": "form-responses@connoradams.co.uk"
+    "CONTACT_RECIPIENT_EMAILS": "form-responses@connoradams.co.uk",
   },
 
   // Static assets configuration
@@ -26,11 +26,11 @@
     "binding": "ASSETS",
 
     // Serve 404.html for not found routes
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
   },
 
   // Enable observability features (logs, traces, metrics)
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }

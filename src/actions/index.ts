@@ -15,9 +15,9 @@ export const server = {
       const env = context.locals.runtime.env;
 
       const resendApiKey = env.RESEND_API_KEY;
-      const recipientEmails = env.CONTACT_RECIPIENT_EMAILS
-        .split(",")
-        .map((email: string) => email.trim());
+      const recipientEmails = env.CONTACT_RECIPIENT_EMAILS.split(",").map(
+        (email: string) => email.trim(),
+      );
       const fromEmail = env.CONTACT_FROM_EMAIL;
 
       // Validate environment variables
