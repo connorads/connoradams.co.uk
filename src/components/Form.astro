@@ -9,7 +9,7 @@ const result = Astro.getActionResult(actions.contact);
 <div>
   {
     result?.data && (
-      <div class="mb-4 rounded-lg border border-emerald-600 bg-emerald-50 px-4 py-3 text-emerald-700">
+      <div class="mb-4 rounded-lg border border-emerald-600 bg-emerald-50 px-4 py-3 text-emerald-700 animate-slide-in-down">
         <p class="font-semibold">✅ {result.data.message}</p>
       </div>
     )
@@ -17,7 +17,7 @@ const result = Astro.getActionResult(actions.contact);
 
   {
     result?.error && !isInputError(result.error) && (
-      <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-red-700">
+      <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-red-700 animate-slide-in-down">
         <p class="font-semibold">❌ {result.error.message}</p>
       </div>
     )
@@ -33,11 +33,11 @@ const result = Astro.getActionResult(actions.contact);
         type="text"
         name="name"
         placeholder="Name"
-        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
+        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
       />
       {
         isInputError(result?.error) && result.error.fields.name && (
-          <span class="text-xs text-red-700" role="alert">
+          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
             {result.error.fields.name.join(", ")}
           </span>
         )
@@ -48,11 +48,11 @@ const result = Astro.getActionResult(actions.contact);
         type="text"
         name="email"
         placeholder="Email"
-        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
+        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
       />
       {
         isInputError(result?.error) && result.error.fields.email && (
-          <span class="text-xs text-red-700" role="alert">
+          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
             {result.error.fields.email.join(", ")}
           </span>
         )
@@ -63,11 +63,11 @@ const result = Astro.getActionResult(actions.contact);
         name="message"
         placeholder="Message"
         rows={3}
-        class="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline"
+        class="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
       ></textarea>
       {
         isInputError(result?.error) && result.error.fields.message && (
-          <span class="text-xs text-red-700" role="alert">
+          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
             {result.error.fields.message.join(", ")}
           </span>
         )
@@ -76,7 +76,7 @@ const result = Astro.getActionResult(actions.contact);
     <input
       type="submit"
       value="Send message ✉️"
-      class="self-center h-10 px-5 font-semibold text-white rounded-lg transition-colors bg-black hover:bg-emerald-600 hover:cursor-pointer"
+      class="self-center h-10 px-5 font-semibold text-white rounded-lg transition-all duration-300 bg-black hover:bg-emerald-600 hover:cursor-pointer hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:shadow-md"
     />
   </form>
 </div>
