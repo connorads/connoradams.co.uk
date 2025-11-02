@@ -7,7 +7,6 @@ Ello ello 👋 I'm Connor Adams and [this is my personal website 🌐](https://c
 ## 👨‍💻 Made with
 
 - [Astro](https://astro.build/) 🚀
-- [React](https://reactjs.org/) ⚛️
 - [Tailwind CSS](https://tailwindcss.com/) 🎏
 - [Cloudflare Workers](https://workers.cloudflare.com/) ⚡
 - And many more, see [`package.json`](package.json)

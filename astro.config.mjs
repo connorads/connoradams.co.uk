@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import cloudflare from "@astrojs/cloudflare";
@@ -13,7 +12,7 @@ export default defineConfig({
     },
     imageService: "cloudflare",
   }),
-  integrations: [react(), icon()],
+  integrations: [icon()],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
