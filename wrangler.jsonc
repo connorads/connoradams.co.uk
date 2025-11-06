@@ -15,6 +15,7 @@
   "vars": {
     "CONTACT_FROM_EMAIL": "Contact Form <noreply@connoradams.co.uk>",
     "CONTACT_RECIPIENT_EMAILS": "form-responses@connoradams.co.uk",
+    "PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAACCRbT_V_rwf4D37",
   },
 
   // Routes configuration

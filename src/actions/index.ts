@@ -18,10 +18,68 @@ export const server = {
         (val) => val || "",
         z.string().min(15, "Message must be at least 15 characters"),
       ),
+      company: z.preprocess((val) => val || "", z.string()),
+      renderTime: z.preprocess((val) => val || "", z.string()),
+      "cf-turnstile-response": z.preprocess(
+        (val) => val || "",
+        z.string().min(1, "Please complete the captcha verification"),
+      ),
     }),
     handler: async (input, context) => {
+      // Honeypot validation - company field should be empty
+      if (input.company) {
+        throw new ActionError({
+          code: "BAD_REQUEST",
+          message: "Invalid form submission",
+        });
+      }
+
+      // Render time validation - must be at least 3 seconds
+      const renderTime = parseInt(input.renderTime);
+      const currentTime = Date.now();
+      const timeDiff = (currentTime - renderTime) / 1000; // Convert to seconds
+
+      if (isNaN(renderTime) || timeDiff < 3) {
+        throw new ActionError({
+          code: "BAD_REQUEST",
+          message: "Form submitted too quickly. Please try again.",
+        });
+      }
+
       // Access environment variables via Cloudflare runtime
       const env = context.locals.runtime.env;
+
+      // Verify Cloudflare Turnstile token
+      const turnstileSecret = env.TURNSTILE_SECRET_KEY;
+      if (!turnstileSecret) {
+        throw new ActionError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Captcha service is not configured",
+        });
+      }
+
+      const turnstileResponse = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            secret: turnstileSecret,
+            response: input["cf-turnstile-response"],
+          }),
+        },
+      );
+
+      const turnstileResult = await turnstileResponse.json();
+
+      if (!turnstileResult.success) {
+        throw new ActionError({
+          code: "BAD_REQUEST",
+          message: "Captcha verification failed. Please try again.",
+        });
+      }
 
       const resendApiKey = env.RESEND_API_KEY;
       const recipientEmails = env.CONTACT_RECIPIENT_EMAILS.split(",").map(

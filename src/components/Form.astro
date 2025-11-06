@@ -4,6 +4,7 @@ import { actions, isInputError } from "astro:actions";
 export const prerender = false;
 
 const result = Astro.getActionResult(actions.contact);
+const { env } = Astro.locals.runtime;
 ---
 
 <div>
@@ -27,6 +28,7 @@ const result = Astro.getActionResult(actions.contact);
     method="POST"
     action={actions.contact}
     class="flex flex-col justify-center"
+    id="contact-form"
   >
     <div class="mb-2">
       <input
@@ -73,6 +75,32 @@ const result = Astro.getActionResult(actions.contact);
         )
       }
     </div>
+
+    <!-- Honeypot field - hidden from users but visible to bots -->
+    <input
+      type="text"
+      name="company"
+      autocomplete="off"
+      tabindex="-1"
+      style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+      aria-hidden="true"
+    />
+
+    <!-- Render time field for bot detection -->
+    <input type="hidden" name="renderTime" id="renderTime" value="" />
+
+    <!-- Cloudflare Turnstile captcha -->
+    <div class="mb-4 flex flex-col items-center">
+      <div class="cf-turnstile" data-sitekey={env.PUBLIC_TURNSTILE_SITE_KEY}></div>
+      {
+        isInputError(result?.error) && result.error.fields["cf-turnstile-response"] && (
+          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
+            {result.error.fields["cf-turnstile-response"].join(", ")}
+          </span>
+        )
+      }
+    </div>
+
     <input
       type="submit"
       value="Send message ✉️"
@@ -80,3 +108,17 @@ const result = Astro.getActionResult(actions.contact);
     />
   </form>
 </div>
+
+<!-- Cloudflare Turnstile Script -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<!-- Render time validation script -->
+<script>
+  // Set the render time when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const renderTimeField = document.getElementById('renderTime') as HTMLInputElement;
+    if (renderTimeField) {
+      renderTimeField.value = Date.now().toString();
+    }
+  });
+</script>
