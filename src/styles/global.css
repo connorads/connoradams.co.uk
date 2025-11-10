@@ -1,5 +1,34 @@
 @import "tailwindcss";
 
+/* CSS Variables for Color Theme */
+:root {
+  --color-ink: #0f1419;
+  --color-midnight: #1a1f2e;
+  --color-slate: #2d3748;
+  --color-amber: #f59e0b;
+  --color-amber-light: #fbbf24;
+  --color-coral: #ff6b6b;
+  --color-coral-light: #ff8787;
+  --color-cream: #faf8f3;
+  --color-warm-white: #fefcf7;
+
+  --font-display: 'Fraunces', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Animated Mesh Gradient Background */
+@keyframes mesh-move {
+  0%, 100% {
+    background-position: 0% 50%, 100% 50%, 50% 0%, 50% 100%;
+  }
+  33% {
+    background-position: 100% 50%, 0% 50%, 50% 100%, 50% 0%;
+  }
+  66% {
+    background-position: 50% 100%, 50% 0%, 0% 50%, 100% 50%;
+  }
+}
+
 /* Custom Keyframe Animations */
 @keyframes fade-in-up {
   from {
@@ -15,7 +44,7 @@
 @keyframes scale-in {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -40,21 +69,81 @@
   75% { transform: translateX(0.5rem); }
 }
 
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3), 0 0 40px rgba(245, 158, 11, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.5), 0 0 60px rgba(245, 158, 11, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* Animation Utility Classes */
 .animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-scale-in {
-  animation: scale-in 0.6s ease-out forwards;
+  animation: scale-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-slide-in-down {
-  animation: slide-in-down 0.5s ease-out forwards;
+  animation: slide-in-down 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-shake {
   animation: shake 0.4s ease-in-out;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Staggered Animation Delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(250, 248, 243, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Grain Texture Overlay */
+.grain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
 }
 
 /* Reduced motion support */

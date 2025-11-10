@@ -9,16 +9,16 @@ const result = Astro.getActionResult(actions.contact);
 <div>
   {
     result?.data && (
-      <div class="mb-4 rounded-lg border border-emerald-600 bg-emerald-50 px-4 py-3 text-emerald-700 animate-slide-in-down">
-        <p class="font-semibold">✅ {result.data.message}</p>
+      <div class="mb-6 rounded-xl border-2 border-amber-400/50 bg-gradient-to-r from-amber-50 to-amber-100 px-5 py-4 text-amber-900 animate-slide-in-down shadow-lg" style="font-family: var(--font-mono);">
+        <p class="font-semibold text-sm md:text-base">✨ {result.data.message}</p>
       </div>
     )
   }
 
   {
     result?.error && !isInputError(result.error) && (
-      <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-red-700 animate-slide-in-down">
-        <p class="font-semibold">❌ {result.error.message}</p>
+      <div class="mb-6 rounded-xl border-2 border-coral-400 bg-gradient-to-r from-red-50 to-coral-100 px-5 py-4 text-red-800 animate-slide-in-down shadow-lg" style="font-family: var(--font-mono);">
+        <p class="font-semibold text-sm md:text-base">⚠️ {result.error.message}</p>
       </div>
     )
   }
@@ -26,57 +26,62 @@ const result = Astro.getActionResult(actions.contact);
   <form
     method="POST"
     action={actions.contact}
-    class="flex flex-col justify-center"
+    class="flex flex-col justify-center space-y-4"
   >
-    <div class="mb-2">
+    <div class="space-y-1">
       <input
         type="text"
         name="name"
-        placeholder="Name"
-        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
+        placeholder="Your name"
+        class="w-full h-12 px-4 text-base border-2 border-slate-300 bg-white/80 text-slate-800 placeholder-slate-500 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 backdrop-blur-sm"
+        style="font-family: var(--font-mono);"
       />
       {
         isInputError(result?.error) && result.error.fields.name && (
-          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
+          <span class="text-xs text-coral-600 animate-shake inline-block font-semibold ml-1" role="alert" style="font-family: var(--font-mono);">
             {result.error.fields.name.join(", ")}
           </span>
         )
       }
     </div>
-    <div class="mb-2">
+    <div class="space-y-1">
       <input
         type="text"
         name="email"
-        placeholder="Email"
-        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
+        placeholder="your.email@example.com"
+        class="w-full h-12 px-4 text-base border-2 border-slate-300 bg-white/80 text-slate-800 placeholder-slate-500 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 backdrop-blur-sm"
+        style="font-family: var(--font-mono);"
       />
       {
         isInputError(result?.error) && result.error.fields.email && (
-          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
+          <span class="text-xs text-coral-600 animate-shake inline-block font-semibold ml-1" role="alert" style="font-family: var(--font-mono);">
             {result.error.fields.email.join(", ")}
           </span>
         )
       }
     </div>
-    <div class="mb-2">
+    <div class="space-y-1">
       <textarea
         name="message"
-        placeholder="Message"
-        rows={3}
-        class="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
+        placeholder="Your message here..."
+        rows={4}
+        class="w-full px-4 py-3 text-base border-2 border-slate-300 bg-white/80 text-slate-800 placeholder-slate-500 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 transition-all duration-300 backdrop-blur-sm resize-none"
+        style="font-family: var(--font-mono);"
       ></textarea>
       {
         isInputError(result?.error) && result.error.fields.message && (
-          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
+          <span class="text-xs text-coral-600 animate-shake inline-block font-semibold ml-1" role="alert" style="font-family: var(--font-mono);">
             {result.error.fields.message.join(", ")}
           </span>
         )
       }
     </div>
-    <input
+    <button
       type="submit"
-      value="Send message ✉️"
-      class="self-center h-10 px-5 font-semibold text-white rounded-lg transition-all duration-300 bg-black hover:bg-emerald-600 hover:cursor-pointer hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:shadow-md"
-    />
+      class="self-center h-12 px-8 font-bold text-white rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+      style="background: linear-gradient(135deg, var(--color-amber) 0%, var(--color-coral) 100%); font-family: var(--font-mono);"
+    >
+      Send Message ✉️
+    </button>
   </form>
 </div>

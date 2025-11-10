@@ -25,64 +25,78 @@ let title = "Connor Adams - Developer & Tech Enthusiast in London";
 
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-linear-to-br from-emerald-400 via-emerald-500 to-teal-600">
-    <div class="flex items-center justify-center pt-12 pb-6">
+  <body class="min-h-screen relative overflow-x-hidden" style="background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 25%, #2d3748 50%, #1a1f2e 75%, #0f1419 100%); background-size: 400% 400%; animation: mesh-move 20s ease infinite;">
+    <!-- Decorative gradient orbs -->
+    <div class="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-amber-500/20 to-coral-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-coral-500/20 to-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="flex items-center justify-center pt-12 pb-6 relative z-10">
       <div
-        class="bg-white rounded-xl shadow-2xl ml-3 mr-3 px-6 py-4 md:px-12 md:py-12 space-y-4 md:space-y-6 xl:space-y-8 opacity-0 animate-fade-in-up"
+        class="glass grain rounded-2xl shadow-2xl ml-3 mr-3 px-6 py-8 md:px-12 md:py-12 space-y-4 md:space-y-6 xl:space-y-8 opacity-0 animate-fade-in-up relative max-w-3xl border border-white/10"
       >
         <h1
-          class="text-center font-serif text-3xl md:text-5xl xl:text-7xl mx-auto opacity-0 animate-fade-in-up bg-clip-text"
+          class="text-center text-4xl md:text-6xl xl:text-8xl mx-auto opacity-0 animate-fade-in-up delay-100 font-bold tracking-tight"
+          style="font-family: var(--font-display); color: var(--color-ink);"
         >
           Connor Adams
         </h1>
-        <img
-          width="531"
-          height="530"
-          class="rounded-full w-auto h-28 md:h-44 xl:h-60 mx-auto opacity-0 animate-scale-in"
-          src="/assets/profile.jpg"
-          alt="Photo of Connor Adams"
-        />
-        <h2 class="text-center text-xl md:text-3xl xl:text-5xl mx-auto opacity-0 animate-fade-in-up">
+        <div class="relative inline-block mx-auto opacity-0 animate-scale-in delay-300">
+          <img
+            width="531"
+            height="530"
+            class="rounded-full w-auto h-32 md:h-48 xl:h-64 mx-auto block ring-4 ring-amber-400/30 shadow-xl animate-float"
+            src="/assets/profile.jpg"
+            alt="Photo of Connor Adams"
+          />
+          <div class="absolute inset-0 rounded-full animate-glow-pulse"></div>
+        </div>
+        <h2
+          class="text-center text-xl md:text-3xl xl:text-5xl mx-auto opacity-0 animate-fade-in-up delay-500 tracking-wide"
+          style="font-family: var(--font-mono); color: var(--color-slate); font-weight: 500;"
+        >
           Developer & Tech Enthusiast
         </h2>
-        <div class="flex justify-center space-x-4">
-          <div class="opacity-0 animate-fade-in-up">
+        <div class="flex justify-center space-x-3 md:space-x-4 flex-wrap gap-2">
+          <div class="opacity-0 animate-fade-in-up delay-600 transform hover:scale-110 transition-transform duration-300">
             <Icon
               href="https://www.linkedin.com/in/connoradams"
               name="linkedin"
               title="LinkedIn profile"
             />
           </div>
-          <div class="opacity-0 animate-fade-in-up">
+          <div class="opacity-0 animate-fade-in-up delay-700 transform hover:scale-110 transition-transform duration-300">
             <Icon
               href="https://twitter.com/connorads"
               name="twitter"
               title="Twitter profile"
             />
           </div>
-          <div class="opacity-0 animate-fade-in-up">
+          <div class="opacity-0 animate-fade-in-up delay-800 transform hover:scale-110 transition-transform duration-300">
             <Icon
               href="https://medium.com/@connorads"
               name="medium"
               title="Medium profile"
             />
           </div>
-          <div class="opacity-0 animate-fade-in-up">
+          <div class="opacity-0 animate-fade-in-up delay-900 transform hover:scale-110 transition-transform duration-300">
             <Icon
               href="https://github.com/connorads"
               name="github"
               title="GitHub profile"
             />
           </div>
-          <div class="opacity-0 animate-fade-in-up">
+          <div class="opacity-0 animate-fade-in-up delay-1000 transform hover:scale-110 transition-transform duration-300">
             <Icon
               href="https://lockbot.app/"
               name="lock"
               title="Lockbot Slack app"
             />
           </div>
-          <div class="opacity-0 animate-fade-in-up">
+          <div class="opacity-0 animate-fade-in-up delay-1000 transform hover:scale-110 transition-transform duration-300">
             <Icon
               href="https://thepengestkhans.co.uk/"
               name="map"
@@ -90,14 +104,18 @@ let title = "Connor Adams - Developer & Tech Enthusiast in London";
             />
           </div>
         </div>
-        <div class="mx-auto divide-gray-400 divide-y-2 max-w-sm md:max-w-xl opacity-0 animate-fade-in-up">
-          <div></div>
-          <div></div>
+        <div class="mx-auto max-w-sm md:max-w-xl opacity-0 animate-fade-in-up delay-700 my-8">
+          <div class="h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent"></div>
         </div>
-        <div class="flex flex-col justify-center opacity-0 animate-fade-in-up">
-          <h3 class="text-center text-1xl md:text-3xl xl:text-4xl">Contact</h3>
+        <div class="flex flex-col justify-center opacity-0 animate-fade-in-up delay-800">
+          <h3
+            class="text-center text-2xl md:text-3xl xl:text-4xl font-bold tracking-tight"
+            style="font-family: var(--font-display); color: var(--color-ink);"
+          >
+            Contact
+          </h3>
         </div>
-        <div class="opacity-0 animate-fade-in-up">
+        <div class="opacity-0 animate-fade-in-up delay-900">
           <Form />
         </div>
       </div>

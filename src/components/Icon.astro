@@ -12,8 +12,9 @@ const { href, name, title } = Astro.props;
 
 <a
   href={href}
-  class="inline-block p-2 rounded-full bg-white bg-opacity-90 hover:bg-emerald-400 hover:scale-110 hover:-translate-y-1 hover:shadow-lg active:scale-95 active:translate-y-0 transition-all duration-300 ease-out"
+  class="inline-block p-2 md:p-3 rounded-full bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-amber-400 hover:bg-gradient-to-br hover:from-amber-50 hover:to-coral-50 hover:scale-110 hover:-translate-y-1 hover:shadow-xl active:scale-95 active:translate-y-0 transition-all duration-300 ease-out"
   aria-label={title}
+  style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);"
 >
-  <AstroIcon name={name} class="size-6 md:size-9 xl:size-12" />
+  <AstroIcon name={name} class="size-6 md:size-8 xl:size-10" style="color: var(--color-slate);" />
 </a>
