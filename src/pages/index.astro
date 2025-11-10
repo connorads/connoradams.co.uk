@@ -26,27 +26,68 @@ let title = "Connor Adams - Developer & Tech Enthusiast in London";
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
   </head>
-  <body class="min-h-screen bg-linear-to-br from-emerald-400 via-emerald-500 to-teal-600">
-    <div class="flex items-center justify-center pt-12 pb-6">
+  <body class="min-h-screen relative overflow-hidden crt-screen animate-crt-flicker" style="background: radial-gradient(circle at center, #1a0033 0%, #0a0014 100%);">
+    <!-- Pixel Grid Background -->
+    <div class="pixel-grid absolute inset-0 opacity-20"></div>
+
+    <!-- Scan Line Effect -->
+    <div class="scan-line absolute inset-0"></div>
+
+    <!-- Arcade Border Decoration -->
+    <div class="absolute top-4 left-4 right-4 bottom-4 border-4 pointer-events-none" style="border-color: var(--arcade-yellow); border-radius: 20px; box-shadow: inset 0 0 30px rgba(255, 255, 0, 0.2);"></div>
+
+    <div class="relative flex items-center justify-center pt-12 pb-6 px-4">
       <div
-        class="bg-white rounded-xl shadow-2xl ml-3 mr-3 px-6 py-4 md:px-12 md:py-12 space-y-4 md:space-y-6 xl:space-y-8 opacity-0 animate-fade-in-up"
+        class="arcade-border rounded-2xl px-6 py-6 md:px-12 md:py-12 space-y-6 md:space-y-8 xl:space-y-10 opacity-0 animate-fade-in-up max-w-4xl w-full"
+        style="background: linear-gradient(135deg, rgba(26, 0, 51, 0.95) 0%, rgba(10, 0, 20, 0.95) 100%); border-color: var(--arcade-red); backdrop-filter: blur(5px);"
       >
+        <!-- GAME START Banner -->
+        <div class="text-center opacity-0 animate-fade-in-up">
+          <p class="pixel-text-yellow animate-flicker" style="font-family: 'Press Start 2P', cursive; font-size: 0.7rem; letter-spacing: 0.2em;">
+            ★ PLAYER 1 START ★
+          </p>
+        </div>
+
+        <!-- Name -->
         <h1
-          class="text-center font-serif text-3xl md:text-5xl xl:text-7xl mx-auto opacity-0 animate-fade-in-up bg-clip-text"
+          class="text-center text-2xl md:text-4xl xl:text-6xl mx-auto opacity-0 animate-fade-in-up pixel-text-yellow font-bold"
+          style="font-family: 'Press Start 2P', cursive; letter-spacing: 0.1em; line-height: 1.5;"
         >
-          Connor Adams
+          CONNOR<br/>ADAMS
         </h1>
-        <img
-          width="531"
-          height="530"
-          class="rounded-full w-auto h-28 md:h-44 xl:h-60 mx-auto opacity-0 animate-scale-in"
-          src="/assets/profile.jpg"
-          alt="Photo of Connor Adams"
-        />
-        <h2 class="text-center text-xl md:text-3xl xl:text-5xl mx-auto opacity-0 animate-fade-in-up">
-          Developer & Tech Enthusiast
+
+        <!-- Score Display -->
+        <div class="flex justify-center gap-8 opacity-0 animate-scale-in">
+          <div class="text-center">
+            <p class="pixel-text-cyan" style="font-family: 'Press Start 2P', cursive; font-size: 0.6rem;">LEVEL</p>
+            <p class="pixel-text-green animate-pixel-pulse" style="font-family: 'Press Start 2P', cursive; font-size: 1.2rem;">∞</p>
+          </div>
+          <div class="text-center">
+            <p class="pixel-text-cyan" style="font-family: 'Press Start 2P', cursive; font-size: 0.6rem;">SCORE</p>
+            <p class="pixel-text-green animate-pixel-pulse" style="font-family: 'Press Start 2P', cursive; font-size: 1.2rem;">999999</p>
+          </div>
+        </div>
+
+        <!-- Profile Image -->
+        <div class="relative mx-auto w-fit opacity-0 animate-scale-in">
+          <div class="absolute -inset-4 arcade-border animate-rainbow-border rounded-lg" style="border-color: var(--arcade-yellow);"></div>
+          <img
+            width="531"
+            height="530"
+            class="relative w-auto h-32 md:h-48 xl:h-64 mx-auto rounded-lg animate-pixel-pulse"
+            src="/assets/profile.jpg"
+            alt="Photo of Connor Adams"
+            style="image-rendering: pixelated; filter: contrast(1.1) brightness(1.1); box-shadow: 0 0 30px var(--arcade-cyan);"
+          />
+        </div>
+
+        <!-- Subtitle -->
+        <h2 class="text-center text-sm md:text-xl xl:text-3xl mx-auto opacity-0 animate-fade-in-up pixel-text-red" style="font-family: 'Press Start 2P', cursive; letter-spacing: 0.1em; line-height: 1.8;">
+          DEVELOPER &<br class="md:hidden"/> TECH ENTHUSIAST
         </h2>
-        <div class="flex justify-center space-x-4">
+
+        <!-- Social Icons -->
+        <div class="flex justify-center flex-wrap gap-3 md:gap-4">
           <div class="opacity-0 animate-fade-in-up">
             <Icon
               href="https://www.linkedin.com/in/connoradams"
@@ -90,15 +131,31 @@ let title = "Connor Adams - Developer & Tech Enthusiast in London";
             />
           </div>
         </div>
-        <div class="mx-auto divide-gray-400 divide-y-2 max-w-sm md:max-w-xl opacity-0 animate-fade-in-up">
-          <div></div>
-          <div></div>
+
+        <!-- Divider -->
+        <div class="mx-auto max-w-sm md:max-w-xl opacity-0 animate-fade-in-up flex items-center gap-2">
+          <div class="flex-1" style="height: 4px; background: linear-gradient(90deg, transparent, var(--arcade-cyan), transparent);"></div>
+          <span class="pixel-text-cyan animate-blink" style="font-family: 'Press Start 2P', cursive; font-size: 1rem;">◆</span>
+          <div class="flex-1" style="height: 4px; background: linear-gradient(90deg, transparent, var(--arcade-cyan), transparent);"></div>
         </div>
+
+        <!-- Contact Header -->
         <div class="flex flex-col justify-center opacity-0 animate-fade-in-up">
-          <h3 class="text-center text-1xl md:text-3xl xl:text-4xl">Contact</h3>
+          <h3 class="text-center text-base md:text-2xl xl:text-3xl pixel-text-cyan" style="font-family: 'Press Start 2P', cursive; letter-spacing: 0.2em; line-height: 1.8;">
+            PRESS START<br class="md:hidden"/> TO CONTACT
+          </h3>
         </div>
+
+        <!-- Contact Form -->
         <div class="opacity-0 animate-fade-in-up">
           <Form />
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center opacity-0 animate-fade-in-up pt-4">
+          <p class="pixel-text-yellow animate-blink" style="font-family: 'Press Start 2P', cursive; font-size: 0.6rem;">
+            INSERT COIN TO CONTINUE
+          </p>
         </div>
       </div>
     </div>

@@ -9,16 +9,16 @@ const result = Astro.getActionResult(actions.contact);
 <div>
   {
     result?.data && (
-      <div class="mb-4 rounded-lg border border-emerald-600 bg-emerald-50 px-4 py-3 text-emerald-700 animate-slide-in-down">
-        <p class="font-semibold">✅ {result.data.message}</p>
+      <div class="mb-4 rounded-lg border-4 px-4 py-3 animate-slide-in-down arcade-border" style="background: rgba(0, 255, 0, 0.2); border-color: var(--arcade-green); box-shadow: 0 0 20px var(--arcade-green), inset 0 0 10px rgba(0, 255, 0, 0.2);">
+        <p class="font-bold tracking-wider text-center" style="color: var(--arcade-green); font-family: 'Press Start 2P', cursive; font-size: 0.7rem; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8), 0 0 10px var(--arcade-green);">★ MESSAGE SENT ★</p>
       </div>
     )
   }
 
   {
     result?.error && !isInputError(result.error) && (
-      <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-red-700 animate-slide-in-down">
-        <p class="font-semibold">❌ {result.error.message}</p>
+      <div class="mb-4 rounded-lg border-4 px-4 py-3 animate-slide-in-down arcade-border animate-flicker" style="background: rgba(255, 0, 64, 0.2); border-color: var(--arcade-red); box-shadow: 0 0 20px var(--arcade-red), inset 0 0 10px rgba(255, 0, 64, 0.2);">
+        <p class="font-bold tracking-wider text-center" style="color: var(--arcade-red); font-family: 'Press Start 2P', cursive; font-size: 0.7rem; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8), 0 0 10px var(--arcade-red);">✖ ERROR ✖</p>
       </div>
     )
   }
@@ -26,48 +26,57 @@ const result = Astro.getActionResult(actions.contact);
   <form
     method="POST"
     action={actions.contact}
-    class="flex flex-col justify-center"
+    class="flex flex-col justify-center space-y-4"
   >
-    <div class="mb-2">
+    <div>
       <input
         type="text"
         name="name"
-        placeholder="Name"
-        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
+        placeholder="ENTER NAME"
+        class="w-full h-12 px-4 text-base border-4 rounded-lg transition-all duration-200"
+        style="background: rgba(10, 0, 20, 0.9); border-color: var(--arcade-yellow); color: var(--arcade-yellow); font-family: 'VT323', monospace; font-size: 1.2rem; box-shadow: inset 0 0 20px rgba(255, 255, 0, 0.1), 0 0 10px var(--arcade-yellow);"
+        onfocus="this.style.borderColor='var(--arcade-cyan)'; this.style.boxShadow='inset 0 0 20px rgba(0, 255, 255, 0.2), 0 0 20px var(--arcade-cyan)';"
+        onblur="this.style.borderColor='var(--arcade-yellow)'; this.style.boxShadow='inset 0 0 20px rgba(255, 255, 0, 0.1), 0 0 10px var(--arcade-yellow)';"
       />
       {
         isInputError(result?.error) && result.error.fields.name && (
-          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
+          <span class="text-xs animate-shake inline-block mt-2 px-2 py-1 rounded" style="color: var(--arcade-red); font-family: 'Press Start 2P', cursive; font-size: 0.6rem; background: rgba(255, 0, 64, 0.2); text-shadow: 0 0 5px var(--arcade-red);" role="alert">
             {result.error.fields.name.join(", ")}
           </span>
         )
       }
     </div>
-    <div class="mb-2">
+    <div>
       <input
         type="text"
         name="email"
-        placeholder="Email"
-        class="w-full h-10 px-3 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
+        placeholder="ENTER EMAIL"
+        class="w-full h-12 px-4 text-base border-4 rounded-lg transition-all duration-200"
+        style="background: rgba(10, 0, 20, 0.9); border-color: var(--arcade-yellow); color: var(--arcade-yellow); font-family: 'VT323', monospace; font-size: 1.2rem; box-shadow: inset 0 0 20px rgba(255, 255, 0, 0.1), 0 0 10px var(--arcade-yellow);"
+        onfocus="this.style.borderColor='var(--arcade-cyan)'; this.style.boxShadow='inset 0 0 20px rgba(0, 255, 255, 0.2), 0 0 20px var(--arcade-cyan)';"
+        onblur="this.style.borderColor='var(--arcade-yellow)'; this.style.boxShadow='inset 0 0 20px rgba(255, 255, 0, 0.1), 0 0 10px var(--arcade-yellow)';"
       />
       {
         isInputError(result?.error) && result.error.fields.email && (
-          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
+          <span class="text-xs animate-shake inline-block mt-2 px-2 py-1 rounded" style="color: var(--arcade-red); font-family: 'Press Start 2P', cursive; font-size: 0.6rem; background: rgba(255, 0, 64, 0.2); text-shadow: 0 0 5px var(--arcade-red);" role="alert">
             {result.error.fields.email.join(", ")}
           </span>
         )
       }
     </div>
-    <div class="mb-2">
+    <div>
       <textarea
         name="message"
-        placeholder="Message"
-        rows={3}
-        class="w-full h-16 px-3 py-2 text-base border-gray-400 text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all duration-300"
+        placeholder="ENTER MESSAGE"
+        rows={4}
+        class="w-full px-4 py-3 text-base border-4 rounded-lg transition-all duration-200"
+        style="background: rgba(10, 0, 20, 0.9); border-color: var(--arcade-yellow); color: var(--arcade-yellow); font-family: 'VT323', monospace; font-size: 1.2rem; box-shadow: inset 0 0 20px rgba(255, 255, 0, 0.1), 0 0 10px var(--arcade-yellow);"
+        onfocus="this.style.borderColor='var(--arcade-cyan)'; this.style.boxShadow='inset 0 0 20px rgba(0, 255, 255, 0.2), 0 0 20px var(--arcade-cyan)';"
+        onblur="this.style.borderColor='var(--arcade-yellow)'; this.style.boxShadow='inset 0 0 20px rgba(255, 255, 0, 0.1), 0 0 10px var(--arcade-yellow)';"
       ></textarea>
       {
         isInputError(result?.error) && result.error.fields.message && (
-          <span class="text-xs text-red-700 animate-shake inline-block" role="alert">
+          <span class="text-xs animate-shake inline-block mt-2 px-2 py-1 rounded" style="color: var(--arcade-red); font-family: 'Press Start 2P', cursive; font-size: 0.6rem; background: rgba(255, 0, 64, 0.2); text-shadow: 0 0 5px var(--arcade-red);" role="alert">
             {result.error.fields.message.join(", ")}
           </span>
         )
@@ -75,8 +84,9 @@ const result = Astro.getActionResult(actions.contact);
     </div>
     <input
       type="submit"
-      value="Send message ✉️"
-      class="self-center h-10 px-5 font-semibold text-white rounded-lg transition-all duration-300 bg-black hover:bg-emerald-600 hover:cursor-pointer hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:shadow-md"
+      value="★ SEND ★"
+      class="self-center h-14 px-8 font-bold rounded-lg arcade-button hover:cursor-pointer border-4 tracking-widest"
+      style="background: linear-gradient(180deg, var(--arcade-red) 0%, var(--arcade-orange) 100%); border-color: var(--arcade-yellow); color: var(--arcade-yellow); font-family: 'Press Start 2P', cursive; font-size: 0.9rem; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8), 0 0 10px var(--arcade-yellow);"
     />
   </form>
 </div>

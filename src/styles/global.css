@@ -1,4 +1,19 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* Retro Arcade Color Variables */
+:root {
+  --arcade-yellow: #ffff00;
+  --arcade-red: #ff0040;
+  --arcade-cyan: #00ffff;
+  --arcade-green: #00ff00;
+  --arcade-purple: #ff00ff;
+  --arcade-orange: #ff8800;
+  --arcade-blue: #0088ff;
+  --dark-bg: #0a0014;
+  --dark-purple: #1a0033;
+  --pixel-size: 4px;
+}
 
 /* Custom Keyframe Animations */
 @keyframes fade-in-up {
@@ -40,6 +55,134 @@
   75% { transform: translateX(0.5rem); }
 }
 
+/* Retro Arcade Animations */
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px currentColor,
+                 0 0 20px currentColor;
+  }
+  45% {
+    opacity: 0.8;
+    text-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 15px currentColor,
+                 0 0 30px currentColor;
+  }
+  55% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes bounce-arcade {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pixel-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes rainbow-border {
+  0% {
+    border-color: var(--arcade-red);
+    box-shadow: 0 0 20px var(--arcade-red), inset 0 0 20px rgba(255, 0, 64, 0.2);
+  }
+  25% {
+    border-color: var(--arcade-yellow);
+    box-shadow: 0 0 20px var(--arcade-yellow), inset 0 0 20px rgba(255, 255, 0, 0.2);
+  }
+  50% {
+    border-color: var(--arcade-green);
+    box-shadow: 0 0 20px var(--arcade-green), inset 0 0 20px rgba(0, 255, 0, 0.2);
+  }
+  75% {
+    border-color: var(--arcade-cyan);
+    box-shadow: 0 0 20px var(--arcade-cyan), inset 0 0 20px rgba(0, 255, 255, 0.2);
+  }
+  100% {
+    border-color: var(--arcade-red);
+    box-shadow: 0 0 20px var(--arcade-red), inset 0 0 20px rgba(255, 0, 64, 0.2);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pixel-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 1; }
+  2% { opacity: 0.95; }
+  4% { opacity: 1; }
+  8% { opacity: 0.98; }
+  10% { opacity: 1; }
+  12% { opacity: 0.97; }
+  14% { opacity: 1; }
+  18% { opacity: 0.99; }
+  20% { opacity: 1; }
+}
+
 /* Animation Utility Classes */
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
@@ -55,6 +198,129 @@
 
 .animate-shake {
   animation: shake 0.4s ease-in-out;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-flicker {
+  animation: flicker 3s ease-in-out infinite;
+}
+
+.animate-bounce-arcade {
+  animation: bounce-arcade 1s ease-in-out infinite;
+}
+
+.animate-pixel-spin {
+  animation: pixel-spin 4s linear infinite;
+}
+
+.animate-rainbow-border {
+  animation: rainbow-border 4s linear infinite;
+}
+
+.animate-pixel-pulse {
+  animation: pixel-pulse 2s ease-in-out infinite;
+}
+
+.animate-crt-flicker {
+  animation: crt-flicker 10s infinite;
+}
+
+/* Retro Arcade Effects */
+.pixel-text-yellow {
+  color: var(--arcade-yellow);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8),
+               0 0 20px var(--arcade-yellow);
+}
+
+.pixel-text-red {
+  color: var(--arcade-red);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8),
+               0 0 20px var(--arcade-red);
+}
+
+.pixel-text-cyan {
+  color: var(--arcade-cyan);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8),
+               0 0 20px var(--arcade-cyan);
+}
+
+.pixel-text-green {
+  color: var(--arcade-green);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8),
+               0 0 20px var(--arcade-green);
+}
+
+.arcade-border {
+  border: 4px solid;
+  box-shadow: 0 0 20px currentColor,
+              inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.pixel-grid {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0px, transparent 1px, transparent 2px, rgba(255, 255, 255, 0.05) 3px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0px, transparent 1px, transparent 2px, rgba(255, 255, 255, 0.05) 3px);
+  background-size: var(--pixel-size) var(--pixel-size);
+}
+
+.crt-screen {
+  position: relative;
+  background: radial-gradient(circle, transparent 60%, rgba(0, 0, 0, 0.3));
+}
+
+.crt-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 3px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scan-line {
+  position: relative;
+}
+
+.scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(transparent, var(--arcade-cyan), transparent);
+  opacity: 0.6;
+  animation: scan-line 4s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.arcade-button {
+  position: relative;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.5),
+              0 0 20px currentColor;
+  transition: all 0.1s;
+}
+
+.arcade-button:hover {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5),
+              0 0 30px currentColor;
+}
+
+.arcade-button:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.5),
+              0 0 40px currentColor;
 }
 
 /* Reduced motion support */
